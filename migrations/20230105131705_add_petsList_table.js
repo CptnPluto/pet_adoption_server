@@ -19,3 +19,5 @@ exports.down = function (knex) {
 // exports.down = function (knex) {
 //     return knex.schema.dropTable("usersPetsList");
 // };
+
+//migrations unlocked?
