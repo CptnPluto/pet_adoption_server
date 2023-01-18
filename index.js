@@ -24,7 +24,7 @@ app.use(
             "http://localhost:3000",
             "http://localhost:3000/CptnPluto/pet_adoption_clien",
             "https://pet-adoption-client-bice.vercel.app",
-            "https://pet-adoption-client-bice.vercel.app",
+            "https://pet-adoption-server-two.vercel.app/",
         ],
         credentials: true,
     })
@@ -36,7 +36,7 @@ app.use("/pets", petsRoutes);
 app.use("/users", usersRoutes);
 app.get("*", (req, res) => {
     res.status(404).send("Page not found");
-}); 
+});
 
 // Start server with db connection
 dbConnection.migrate.latest().then((migration) => {
