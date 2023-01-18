@@ -19,7 +19,15 @@ app.use(express.json()); // Replaces default Node body-parser -- IMPORTANT
 app.use(cookieParser());
 // app.use(express.urlencoded({ extended: false })); // Necessary?
 app.use("/images", express.static("images"));
-app.use(cors({ origin: "http://localhost:3000", credentials: true })); // Use cors to allow cross-origin requests
+app.use(
+    cors({
+        origin: [
+            "http://localhost:3000",
+            "https://pet-adoption-client-bice.vercel.app",
+        ],
+        credentials: true,
+    })
+); // Use cors to allow cross-origin requests
 
 app.use(morgan("tiny")); // Research this
 
