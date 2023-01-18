@@ -30,11 +30,7 @@ exports.up = function (knex) {
             table.boolean("hypoallergenic").defaultTo(false);
             table.string("dietary").defaultTo("");
             //add a column for ownerId that is an integer and defaults to -1 and is also a foreign key that references the id column in the users table
-            table
-                .integer("ownerId")
-                .unsigned()
-                .references("id")
-                .inTable("users");
+            table.integer("ownerId").unsigned().inTable("users");
             table.timestamp("created_at").defaultTo(knex.fn.now());
         });
 };
