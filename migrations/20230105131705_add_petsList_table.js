@@ -1,7 +1,7 @@
 exports.up = function (knex) {
     return knex.schema.createTable("usersPetsList", (table) => {
-        table.integer("userId").unsigned();
-        table.integer("petId").unsigned();
+        table.integer("userId").unsigned().notNullable();
+        table.integer("petId").unsigned().notNullable();
     });
 };
 
