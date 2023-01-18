@@ -22,17 +22,18 @@ app.use(
     cors({
         origin: [
             "http://localhost:3000",
+            "http://localhost:3000/CptnPluto/pet_adoption_clien",
+            "https://pet-adoption-client-bice.vercel.app",
             "https://pet-adoption-client-bice.vercel.app",
         ],
         credentials: true,
     })
-); 
+);
 
-app.use(morgan("tiny")); 
+app.use(morgan("tiny"));
 
 app.use("/pets", petsRoutes);
 app.use("/users", usersRoutes);
-
 
 // Start server with db connection
 dbConnection.migrate.latest().then((migration) => {

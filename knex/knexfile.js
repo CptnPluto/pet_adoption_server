@@ -10,9 +10,10 @@ module.exports = {
         user: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWD,
         host: process.env.HOSTNAME,
-        ssl: {
-            ca: "/etc/ssl/cert.pem",
-        },
+        // ssl: {
+        //     ca: "/etc/ssl/cert.pem",
+        // },
+        ssl: true,
     },
     pool: {
         min: 2,
