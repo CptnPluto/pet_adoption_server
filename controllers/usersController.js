@@ -3,7 +3,6 @@ const {
     addUserModel,
     getUserByEmailModel,
     editUserModel,
-    checkLogin,
     getUserById,
     updatePassModel,
 } = require("../Models/usersModel");
@@ -41,6 +40,8 @@ const loginWithHash = async (req, res) => {
                 res.cookie("token", token, {
                     maxAge: 86000000,
                     httpOnly: true,
+                    secure: process.env.NODE_ENV === "production" ? true : false,
+                    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
                 });
                 res.send({ user: user, ok: true });
             }
