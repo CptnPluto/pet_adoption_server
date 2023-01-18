@@ -34,6 +34,9 @@ app.use(morgan("tiny"));
 
 app.use("/pets", petsRoutes);
 app.use("/users", usersRoutes);
+app.get("*", (req, res) => {
+    res.status(404).send("Page not found");
+});
 
 // Start server with db connection
 dbConnection.migrate.latest().then((migration) => {
