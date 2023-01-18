@@ -40,8 +40,10 @@ const loginWithHash = async (req, res) => {
                 res.cookie("token", token, {
                     maxAge: 86000000,
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === "production" ? true : false,
-                    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+                    secure:
+                        process.env.NODE_ENV === "production" ? true : false,
+                    sameSite:
+                        process.env.NODE_ENV === "production" ? "none" : "lax",
                 });
                 res.send({ user: user, ok: true });
             }
@@ -65,6 +67,8 @@ function logout(req, res) {
 
 async function signup(req, res) {
     try {
+        req.body.picture =
+            "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
         const userId = await addUserModel(req.body);
         res.send({ userId: userId, ok: true }); // apparently you can't just send the id, because it will think it's a status code
     } catch (err) {
