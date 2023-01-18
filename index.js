@@ -25,6 +25,7 @@ app.use(
             "http://localhost:3000/CptnPluto/pet_adoption_clien",
             "https://pet-adoption-client-bice.vercel.app",
             "https://pet-adoption-server-two.vercel.app/",
+            "https://pet-adoption-client-bswe6zbeo-cptnpluto.vercel.app",
         ],
         credentials: true,
     })
