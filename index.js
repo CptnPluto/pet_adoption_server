@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json()); // Replaces default Node body-parser -- IMPORTANT
 app.use(cookieParser());
-// app.use(express.urlencoded({ extended: false })); // Necessary?
 app.use("/images", express.static("images"));
 app.use(
     cors({
@@ -27,25 +26,13 @@ app.use(
         ],
         credentials: true,
     })
-); // Use cors to allow cross-origin requests
+); 
 
-app.use(morgan("tiny")); // Research this
+app.use(morgan("tiny")); 
 
 app.use("/pets", petsRoutes);
 app.use("/users", usersRoutes);
 
-// app.get("/set-cookie", (req, res) => {
-//     res.cookie("myCookie", "myCookieValue", {
-//         maxAge: 1000 * 60 * 60 * 24 * 7,
-//         httpOnly: true,
-//     });
-//     res.send("Cookie set");
-// });
-
-// app.get("/read-cookie", (req, res) => {
-//     console.log(req.cookies);
-//     res.send("Cookie read");
-// });
 
 // Start server with db connection
 dbConnection.migrate.latest().then((migration) => {
