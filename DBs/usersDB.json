@@ -1,0 +1,12 @@
+[
+    {
+        "firstName": "Fillip",
+        "lastName": "NessAiver",
+        "email": "cptnpluto@gmail.com",
+        "password1": "test123",
+        "password2": "test123",
+        "id": "d22ff889-8532-42df-9c63-700ce4801fb3",
+        "bio": "This is a test bio.",
+        "pets": [1, 2, 3]
+    }
+]

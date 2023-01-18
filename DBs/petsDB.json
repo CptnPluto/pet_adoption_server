@@ -1,0 +1,63 @@
+[
+    {
+        "id": "1",
+        "name": "Fredy",
+        "status": "adopted",
+        "picture": "https://images.unsplash.com/photo-1606602842475-a5852a58b399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
+        "height": "1.80",
+        "weight": "80",
+        "color": "brown",
+        "bio": "A good doggo",
+        "hypoallergenic": "1",
+        "dietaryRes": "Vegan",
+        "breed": "Golden Doodle"
+    },
+    {
+        "id": "2",
+        "name": "Missy",
+        "status": "available",
+        "picture": "https://images.unsplash.com/photo-1606602842475-a5852a58b399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
+        "height": "1.80",
+        "weight": "80",
+        "color": "brown",
+        "hypoallergenic": "1",
+        "dietaryRes": "Vegan",
+        "breed": "Golden Doodle"
+    },
+    {
+        "id": "3",
+        "name": "Silly",
+        "status": "fostered",
+        "picture": "https://images.unsplash.com/photo-1606602842475-a5852a58b399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
+        "height": "1.80",
+        "weight": "80",
+        "color": "brown",
+        "hypoallergenic": "1",
+        "dietaryRes": "Vegan",
+        "breed": "Golden Doodle"
+    },
+    {
+        "id": "4",
+        "name": "Billy",
+        "status": "adopted",
+        "picture": "https://images.unsplash.com/photo-1606602842475-a5852a58b399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
+        "height": "1.80",
+        "weight": "80",
+        "color": "brown",
+        "hypoallergenic": "1",
+        "dietaryRes": "Vegan",
+        "breed": "Golden Doodle"
+    },
+    {
+        "id": "5",
+        "name": "Jilly",
+        "status": "fostered",
+        "picture": "https://images.unsplash.com/photo-1606602842475-a5852a58b399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",
+        "height": "1.80",
+        "weight": "80",
+        "color": "brown",
+        "hypoallergenic": "1",
+        "dietaryRes": "Vegan",
+        "breed": "Golden Doodle"
+    }
+]
