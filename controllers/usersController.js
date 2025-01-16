@@ -1,3 +1,4 @@
+// require("dotenv").config();
 const {
     readAllUsersAsyncModel,
     addUserModel,
@@ -8,7 +9,6 @@ const {
 } = require("../Models/usersModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 
 async function getAllUsers(req, res) {
     try {

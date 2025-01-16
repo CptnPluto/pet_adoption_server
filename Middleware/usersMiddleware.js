@@ -1,6 +1,6 @@
+// require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const Ajv = require("ajv");
 const {
     getUserByEmailModel,
