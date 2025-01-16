@@ -1,13 +1,14 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const morgan = require("morgan");
-const dbConnection = require("./knex/knex");
+import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import morgan from "morgan";
+import dbConnection from "./knex/knex.mjs";
 
-const petsRoutes = require("./routes/petsRoutes");
-const usersRoutes = require("./routes/usersRoutes");
-const { _ } = require("ajv"); // Ensure AJV is up-to-date
+import petsRoutes from "./routes/petsRoutes.mjs";
+import usersRoutes from "./routes/usersRoutes.mjs";
+import Ajv from "ajv"; // Ensure AJV is up-to-date
 
 //Express automatically detects the content type of the request and parses it into a JSON object
 const app = express();
