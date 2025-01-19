@@ -35,7 +35,7 @@ app.use(morgan("tiny"));
 
 app.use("/pets", petsRoutes);
 app.use("/users", usersRoutes);
-app.get("*", (req, res) => {
+app.all("*", (req, res) => {
     res.status(404).send("Page not found");
 });
 
