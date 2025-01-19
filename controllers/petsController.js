@@ -13,6 +13,7 @@ const {
 	adoptOrFosterModel,
 	updatePetModel,
 } = require("../Models/petsModel");
+const { get } = require("../routes/petsRoutes");
 
 async function getAllPets(req, res) {
 	try {
@@ -82,10 +83,41 @@ async function getPetsByUserId(req, res) {
 		res.status(500).send(error.message);
 	}
 }
+async function getPetsByUserId2025(req, res) {
+	try {
+		const pets = await getPetsByUserIdModel(req.body.userId);
+		if (!pets) {
+			res.status(404).send("Pets not found");
+			return;
+		}
+		res.send(pets);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error.message);
+	}
+}
 
 async function adoptOrFoster(req, res) {
 	try {
 		const { petId, userId, update } = req.params;
+		const result = await adoptOrFosterModel(petId, userId, update);
+		if (!result) {
+			res.status(404).send("Pet not found");
+			return;
+		}
+		console.log("Added ownerId to pet: ", result);
+		res.send({ ok: true });
+	} catch (err) {
+		console.log(err);
+		res.status(500).send(err.message);
+	}
+}
+
+// 2025 version:
+async function adoptOrFoster2025(req, res) {
+	try {
+		const { userId, update } = req.body;
+		const petId = req.params.petId;
 		const result = await adoptOrFosterModel(petId, userId, update);
 		if (!result) {
 			res.status(404).send("Pet not found");
@@ -129,6 +161,22 @@ async function savePet(req, res) {
 		res.status(500).send(error.message);
 	}
 }
+async function savePet2025(req, res) {
+	try {
+		const { petId } = req.params;
+		const { userId } = req.body;
+		const petSaved = await savePetModel(petId, userId);
+		console.log(petSaved);
+		if (!petSaved) {
+			res.status(404).send("Pet not found");
+			return;
+		}
+		res.status(200).send({ ok: true });
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error.message);
+	}
+}
 
 async function unSavePet(req, res) {
 	try {
@@ -146,9 +194,38 @@ async function unSavePet(req, res) {
 	}
 }
 
+async function unSavePet2025(req, res) {
+	try {
+		const { petId } = req.params;
+		const { userId } = req.body;
+		const petUnSaved = await unSavePetModel(petId, userId);
+		console.log("Pet unSaved: ", petUnSaved);
+		if (!petUnSaved) {
+			res.status(404).send("Pet not found");
+			return;
+		}
+		res.send({ ok: true });
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error.message);
+	}
+}
+
 async function getSavedPets(req, res) {
 	try {
 		const petsList = await getSavedPetsModel(req.params.id);
+		if (!petsList) {
+			res.status(500).send("Error adding pet to saved list.");
+		}
+		res.send(petsList);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send(error.message);
+	}
+}
+async function getSavedPets2025(req, res) {
+	try {
+		const petsList = await getSavedPetsModel(req.body.userId);
 		if (!petsList) {
 			res.status(500).send("Error adding pet to saved list.");
 		}
@@ -189,6 +266,7 @@ async function updatePet(req, res) {
 			console.log("File path: ", req.file.path);
 			pet.picture = req.file.path;
 		}
+        // petId is in pet object. No need to pass it as a param
 		const updatedPet = await updatePetModel(petId, pet);
 		if (!updatedPet) {
 			res.status(404).send("Pet not found");
@@ -208,11 +286,16 @@ module.exports = {
 	getPetById,
 	searchPets,
 	getPetsByUserId,
+	getPetsByUserId2025,
 	adoptOrFoster,
 	returnPet,
 	savePet,
+	savePet2025,
 	unSavePet,
+	unSavePet2025,
 	getSavedPets,
+    getSavedPets2025,
 	deletePet,
 	updatePet,
+	adoptOrFoster2025,
 };

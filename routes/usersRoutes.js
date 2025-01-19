@@ -4,14 +4,14 @@ const router = express.Router();
 const UsersController = require("../controllers/usersController");
 
 const {
-    isNewUser,
-    validateBody,
-    passwordsMatch,
-    hashPwd,
-    hashNewPwd,
-    doesUserExist,
-    auth,
-    isAdmin,
+	isNewUser,
+	validateBody,
+	passwordsMatch,
+	hashPwd,
+	hashNewPwd,
+	doesUserExist,
+	auth,
+	isAdmin,
 } = require("../Middleware/usersMiddleware");
 const { upload } = require("../Middleware/imagesMiddleware");
 const { checkUserExistsModel } = require("../Models/usersModel");
@@ -19,34 +19,18 @@ const { userSchema } = require("../schemas/userSchema");
 
 //TD: add middleware to check password and email. Extract logic from controller.
 router.get("/", auth, UsersController.getUserData); // Get current user session
-router.post(
-    "/login",
-    doesUserExist,
-    passwordsMatch,
-    UsersController.loginWithHash
-);
-router.post(
-    "/signup",
-    validateBody(userSchema),
-    isNewUser,
-    hashPwd,
-    UsersController.signup
-);
+router.post("/login", doesUserExist, passwordsMatch, UsersController.loginWithHash);
+router.post("/signup", validateBody(userSchema), isNewUser, hashPwd, UsersController.signup);
 router.get("/logout", UsersController.logout);
 router.put("/edit", auth, UsersController.editUser);
+router.put("/uploadPhoto", auth, upload.single("picture"), UsersController.editUser);
 router.put(
-    "/uploadPhoto",
-    auth,
-    upload.single("picture"),
-    UsersController.editUser
-);
-router.put(
-    "/changePass",
-    auth,
-    doesUserExist,
-    passwordsMatch,
-    hashNewPwd,
-    UsersController.changePassword
+	"/changePass",
+	auth,
+	doesUserExist,
+	passwordsMatch,
+	hashNewPwd,
+	UsersController.changePassword
 );
 router.get("/all", auth, isAdmin, UsersController.getAllUsers); // Get all users (admin only)
 
